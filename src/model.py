@@ -8,4 +8,5 @@ def load_model():
     api_key = os.getenv("groq_api_key") or os.getenv("GROQ_API_KEY")
     if api_key:
         os.environ["GROQ_API_KEY"] = api_key
-    return ChatGroq(model="openai/gpt-oss-120b")
+    return ChatGroq(model="llama-3.3-70b-versatile", max_tokens=512, max_retries=1)
+ 
