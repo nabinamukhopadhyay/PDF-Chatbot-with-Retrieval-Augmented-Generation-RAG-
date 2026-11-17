@@ -9,7 +9,7 @@ def load_model():
     if api_key:
         os.environ["GOOGLE_API_KEY"] = api_key
     return ChatGoogleGenerativeAI(
-        model="gemini-2.5-flash",
+        model="gemini-3.8-flash",
         temperature=0.3,
         max_output_tokens=500,
         thinking_budget=0,
