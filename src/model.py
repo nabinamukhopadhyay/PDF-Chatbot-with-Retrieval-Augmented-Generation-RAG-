@@ -1,12 +1,17 @@
 import os
 from dotenv import load_dotenv
-from langchain_groq import ChatGroq
+from langchain_google_genai import ChatGoogleGenerativeAI
 
 load_dotenv()
 
 def load_model():
-    api_key = os.getenv("groq_api_key") or os.getenv("GROQ_API_KEY")
+    api_key = os.getenv("GOOGLE_API_KEY") or os.getenv("google_api_key")
     if api_key:
-        os.environ["GROQ_API_KEY"] = api_key
-    return ChatGroq(model="qwen/qwen3.8-27b", reasoning_effort="none", max_tokens=300, max_retries=0, request_timeout=20)
+        os.environ["GOOGLE_API_KEY"] = api_key
+    return ChatGoogleGenerativeAI(
+        model="gemini-2.5-flash",
+        temperature=0.3,
+        max_output_tokens=500,
+        thinking_budget=0,
+    )
  
